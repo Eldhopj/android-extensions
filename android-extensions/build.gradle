@@ -14,12 +14,6 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -42,7 +36,7 @@ afterEvaluate {
 
                 groupId = 'com.github.Eldhopj'
                 artifactId = 'android-extensions'
-                version = '0.1'
+                version = '1.0'
             }
         }
     }
