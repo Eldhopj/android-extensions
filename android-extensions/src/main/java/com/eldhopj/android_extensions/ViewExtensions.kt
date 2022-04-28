@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 /**
  * Safe click listener to restrict multiple consecutive click events for the view.
  *
- * @param defaultInterval Interval to wait until click is enabled. Default interval is 2000 Millis
+ * @param defaultInterval Interval to wait until click is enabled. Default interval is 800ms
  * @param listener Callback to invoke when the event triggered.
  *
  */
