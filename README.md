@@ -80,6 +80,7 @@ Please go thorough the [Bundle Extension][6] code documentation for more informa
 - .**getAppVersionCode** ->   Get app version code
 - .**getAppVersionName** ->   Get app version name
 - .**resourceToUri** ->   Returns the resource in Uri format
+
 		Parameters
 		1.resId -> Resource id.
 - .**getAppUserAgent** ->   Returns the App user-agent which can be used to pass in the API headers or params.
