@@ -22,7 +22,7 @@ allprojects {
 dependency to your module `build.gradle` file
 ```gradle
 dependencies {
-    implementation 'com.github.Eldhopj:android-extensions:0.1'
+    implementation 'com.github.Eldhopj:android-extensions:1.0'
 }
 ```
 
