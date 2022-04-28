@@ -42,7 +42,7 @@ afterEvaluate {
 
                 groupId = 'com.github.Eldhopj'
                 artifactId = 'android-extensions'
-                version = '1.0'
+                version = '0.1'
             }
         }
     }

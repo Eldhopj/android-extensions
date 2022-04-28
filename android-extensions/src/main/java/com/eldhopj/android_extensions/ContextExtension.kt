@@ -31,15 +31,15 @@ import org.jetbrains.annotations.NotNull
 /**
  * Get Color from res
  *
- * @param id color resource id
+ * @param colorId color resource id
  * @return [Int] A single color value
  */
-fun Context.getColorCompat(@ColorRes id: Int): Int = ContextCompat.getColor(this, id)
+fun Context.getColorCompat(@ColorRes colorId: Int): Int = ContextCompat.getColor(this, colorId)
 
 /**
  * Get drawable from res
  *
- * @param id
+ * @param id drawable resource id
  * @return [Drawable] Drawable An object that can be used to draw this resource.
  */
 fun Context.getDrawableCompat(@DrawableRes id: Int): Drawable? = ContextCompat.getDrawable(this, id)
@@ -85,7 +85,7 @@ fun Context.browse(url: String?, newTask: Boolean = false) {
 }
 
 /**
- *  Hides the keyboard from the user
+ * Hides the keyboard from the user
  * @param view
  */
 fun Context?.hideKeyboard(view: View) {
@@ -115,7 +115,7 @@ fun Context?.isOnline(): Boolean = this?.let {
 } ?: false
 
 /**
- * Checks whether the mobile is connected to Wi-Fi or not
+ * Checks whether the device is connected to Wi-Fi or not
  *
  * @return[Boolean] if connected returns true
  */
@@ -133,7 +133,7 @@ fun Context?.isConnectedToWifiNetwork(): Boolean = this?.let {
 
 
 /**
- * Checks whether the mobile is connected to Mobile-data or not
+ * Checks whether the device is connected to Mobile-data or not
  *
  * @return[Boolean] if connected returns true
  */
@@ -251,11 +251,7 @@ fun Context.getAppName(): String = applicationInfo.loadLabel(packageManager).toS
  */
 fun Context?.weakReference() = WeakReference(this)
 
-/**
- * Returns the [ConnectivityManager] instance.
- *
- * @return [ConnectivityManager] instance
- */
+
 private fun Context?.connectivityManager(): ConnectivityManager? {
     if (this == null) return null
     return ContextCompat.getSystemService(this, ConnectivityManager::class.java)

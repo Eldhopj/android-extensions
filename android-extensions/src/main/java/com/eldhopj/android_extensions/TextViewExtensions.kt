@@ -25,10 +25,10 @@ fun TextView?.isEllipsized(): Boolean {
 /**
  * Overrides the default typeface with the font resource Provided.
  *
- * @param font Font Resource id
+ * @param fontRes Font Resource id
  */
-fun TextView.setFontFamily(@FontRes font: Int) {
-    this.typeface = ResourcesCompat.getFont(context, font)
+fun TextView.setFontFamily(@FontRes fontRes: Int) {
+    this.typeface = ResourcesCompat.getFont(context, fontRes)
 }
 
 /**
