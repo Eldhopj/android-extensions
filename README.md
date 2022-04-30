@@ -68,11 +68,11 @@ Please go thorough the [Bundle Extension][6] code documentation for more informa
 - .**hideKeyboard** ->  Hides the keyboard from the user
 
 		Parameters
-		1.colorId -> color resource id
+		1.view -> view id
 - .**showKeyboard** ->  Displays the keyboard to the user
 
 		Parameters
-		1.colorId -> color resource id
+		1.view -> view id
 - .**isOnline** ->   Checks whether device is connected to network or not.
 - .**isConnectedToWifiNetwork** ->   Checks whether the device is connected to Wi-Fi or not.
 - .**isConnectedToCellularNetwork** ->   Checks whether the device is connected to Mobile-data or not.
