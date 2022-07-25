@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
  * @param duration Toast duration. Default is short
  */
 fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    requireContext().toast(message, duration)
+    context.toast(message, duration)
 }
 
 /**
@@ -22,5 +22,5 @@ fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
  * @param duration Toast duration. Default is short
  */
 fun Fragment.toast(@StringRes stringRes: Int, duration: Int = Toast.LENGTH_SHORT) {
-    requireContext().toast(stringRes, duration)
+    context.toast(stringRes, duration)
 }

@@ -22,7 +22,7 @@ allprojects {
 dependency to your module `build.gradle` file
 ```gradle
 dependencies {
-    implementation 'com.github.Eldhopj:android-extensions:0.1'
+    implementation 'com.github.Eldhopj:android-extensions:0.2'
 }
 ```
 
@@ -125,37 +125,31 @@ Please go thorough the [TextView Extensions][7] code documentation for more info
 
 - .**setOnSafeClickListener** ->  Restrict multiple consecutive click events for the view.
 
-		Parameters
-		1.defaultInterval -> defaultInterval Interval to wait until click is enabled (not mandatory). Default interval is 800ms
+        Parameters
+        1.defaultInterval -> defaultInterval Interval to wait until click is enabled (not mandatory). Default interval is 800ms
 - .**enable** ->   Make View Enable
 - .**disable** ->   Make view Disable, goes in a disabled color and clicks wont accept
 - .**gone** ->   Make the view Gone
 - .**visible** ->   Make the view Visible
-- .**snackBar** ->   Show a Snackbar with message
+- .**snackbar** ->   Shows Snackbar
 
-		Parameters
-		1.message ->  snackBar message, either in string or string res
-		2.length -> snackBar duration (not mandatory). Default value is long
-- .**snackBarAction** ->   Show a Snackbar with message and the action execute immediately after the message shown
+        Parameters
+        1.messageRes ->  snackbar message
+        2.length -> duration
+        3.actionRes -> action button text (optinal). Needed only if there is any action for snackbar
+        4.actionColor -> Color of action button (optinal)
 
-		Parameters
-		1.message ->  snackBar message, either in string or string res
-		2.length -> snackBar duration (not mandatory). Default value is long
-```kotlin
-button.setOnSafeClickListener {
-	it?.snackBarAction("Snackbar text") {
-		// ... Snackbar action
-	}
-}
-```
-*For showing snackbar **with action button** and, execute the action on tapping on action button*
+Sample Code:
 
 ```kotlin
-button.setOnSafeClickListener {
-	it?.snackBarAction("Snackbar text") {
-		action("R.string.snackbar_done_button") {
-			// ... Snackbar action
-		}
+button.setOnSafeClickListener { view ->
+	view?.snackbar(
+		R.string.app_name,
+		Snackbar.LENGTH_INDEFINITE,
+		R.string.retry,
+		R.color.black
+	){
+		toast("action clicked")
 	}
 }
 ```
