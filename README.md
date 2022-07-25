@@ -22,7 +22,7 @@ allprojects {
 dependency to your module `build.gradle` file
 ```gradle
 dependencies {
-    implementation 'com.github.Eldhopj:android-extensions:0.2'
+    implementation 'com.github.Eldhopj:android-extensions:1.0'
 }
 ```
 
@@ -68,11 +68,11 @@ Please go thorough the [Bundle Extension][6] code documentation for more informa
 - .**hideKeyboard** ->  Hides the keyboard from the user
 
 		Parameters
-		1.colorId -> color resource id
+		1.view -> view id
 - .**showKeyboard** ->  Displays the keyboard to the user
 
 		Parameters
-		1.colorId -> color resource id
+		1.view -> view id
 - .**isOnline** ->   Checks whether device is connected to network or not.
 - .**isConnectedToWifiNetwork** ->   Checks whether the device is connected to Wi-Fi or not.
 - .**isConnectedToCellularNetwork** ->   Checks whether the device is connected to Mobile-data or not.
@@ -80,6 +80,7 @@ Please go thorough the [Bundle Extension][6] code documentation for more informa
 - .**getAppVersionCode** ->   Get app version code
 - .**getAppVersionName** ->   Get app version name
 - .**resourceToUri** ->   Returns the resource in Uri format
+
 		Parameters
 		1.resId -> Resource id.
 - .**getAppUserAgent** ->   Returns the App user-agent which can be used to pass in the API headers or params.
