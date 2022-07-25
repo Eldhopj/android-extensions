@@ -2,7 +2,6 @@ package com.eldhopj.android_extensions
 
 import android.view.View
 import androidx.annotation.ColorRes
-import androidx.annotation.NonNull
 import androidx.annotation.StringRes
 import com.eldhopj.android_extensions.utils.SafeClickListener
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -67,113 +66,41 @@ fun View?.visible() {
 }
 
 /**
- * Show a Snackbar with message
+ * Show a Snackbar
  *
- * @param message Snackbar message
- * @param length Snackbar duration. Default is Long
- */
-fun View.snackBar(
-    @NonNull message: String,
-    @BaseTransientBottomBar.Duration length: Int = Snackbar.LENGTH_LONG
-) = snackBarAction(message, length) {}
-
-/**
- * Show a Snackbar with message res
+ * ```
+ * button.setOnSafeClickListener { view ->
+ *      view?.snackbar(
+ *          R.string.app_name,
+ *          Snackbar.LENGTH_INDEFINITE,
+ *          R.string.retry,
+ *          R.color.black
+ *      ){
+ *          toast("action clicked")
+ *      }
+ * }
+ * ```
  *
- * @param messageRes Snackbar message res
- * @param length Snackbar duration. Default is Long
+ * @param messageRes snackbar message string resource
+ * @param length snackbar duration.
+ * @param actionRes Action button text res. optional needed only if we are setting an action
+ * @param actionColor Color resource for action text. optional
+ * @param action action happens when we click on snackbar action button. optional
  */
-fun View.snackBar(
+fun View.snackbar(
     @StringRes messageRes: Int,
-    @BaseTransientBottomBar.Duration length: Int = Snackbar.LENGTH_LONG
-) = snackBarAction(messageRes, length) {}
-
-
-/**
- * Show a Snackbar with message and the action execute immediately after the message shown
- *
- * Sample code :
-button.setOnSafeClickListener {
-it?.snackBarAction("Snackbar text") {
-// ... Snackbar action
-}
-}
- * @param message Snackbar message
- * @param length Snackbar duration. Default is Long
- * @receiver
- */
-inline fun View.snackBarAction(
-    @NonNull message: String,
-    @BaseTransientBottomBar.Duration length: Int = Snackbar.LENGTH_LONG,
-    action: Snackbar.() -> Unit
+    @BaseTransientBottomBar.Duration length: Int,
+    @StringRes actionRes: Int?,
+    @ColorRes actionColor: Int? = null,
+    action: ((View) -> Unit)? = null
 ) {
-    val snack = Snackbar.make(this, message, length)
-    snack.action()
-    snack.show()
-}
-
-/**
- * Show a Snackbar with message and the action execute immediately after the message shown
- *
- * Sample code :
-button.setOnSafeClickListener {
-it?.snackBarAction("Snackbar text") {
-// ... Snackbar action
-}
-}
- * @param messageRes Snackbar message res
- * @param length Snackbar duration. Default is Long
- * @receiver
- */
-inline fun View.snackBarAction(
-    @StringRes messageRes: Int,
-    @BaseTransientBottomBar.Duration length: Int = Snackbar.LENGTH_LONG,
-    action: Snackbar.() -> Unit
-) {
-    val snack = Snackbar.make(this, messageRes, length)
-    snack.action()
-    snack.show()
-}
-
-/**
- * Show a Snackbar action with [actionRes] button, execute the action on tapping on action button
- *
- * Sample code :
-button.setOnSafeClickListener {
-it?.snackBarAction("Snackbar text") {
-action(R.string.snackbar_done_button) {
-// ... Snackbar action
-}
-}
-}
- *
- * @param actionRes Action button text res
- * @param color Color res of action text
- * */
-fun Snackbar.action(
-    @StringRes actionRes: Int,
-    @ColorRes color: Int? = null,
-    listener: (View) -> Unit
-) {
-    setAction(actionRes, listener)
-    color?.let { setActionTextColor(context.getColorCompat(color)) }
-}
-
-/**
- * Show a Snackbar action with [action] button, execute the action on tapping on action button
- *
- * Sample code :
-button.setOnSafeClickListener {
-it?.snackBarAction("Snackbar text") {
-action("Done") {
-// ... Snackbar action
-}
-}
-}
- * @param action Action button text
- * @param color Color res of action text
- * */
-fun Snackbar.action(action: String, @ColorRes color: Int? = null, listener: (View) -> Unit) {
-    setAction(action, listener)
-    color?.let { setActionTextColor(context.getColorCompat(color)) }
+    val snackbar = Snackbar.make(this, messageRes, length)
+    if (actionRes != null && action != null) {
+        actionColor?.let { snackbar.setActionTextColor(context.getColorCompat(it)) }
+        snackbar.setAction(actionRes) {
+            action(this)
+        }.show()
+    } else {
+        snackbar.show()
+    }
 }
